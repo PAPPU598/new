@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pappu Sarkar's Money Tracker - Daily Expenses (₹)</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <h1>💰 Pappu Sarkar's Money Tracker</h1>
+                <button id="darkModeToggle" class="dark-mode-btn" onclick="toggleDarkMode()">
+                    🌙 Dark Mode
+                </button>
+            </div>
+            <div class="balance-card">
+                <h2>Current Balance</h2>
+                <div id="balance-display">₹0.00</div>
+                <small>West Bengal, India</small>
+            </div>
+        </header>
+
+        <!-- Add Transaction -->
+        <section class="transaction-form">
+            <h2>Add Daily Transaction</h2>
+            <div class="form-row">
+                <select id="transaction-type">
+                    <option value="income">💹 Income (+)</option>
+                    <option value="expense">💸 Expense (-)</option>
+                </select>
+                <input type="text" id="description" placeholder="Description (e.g. College Canteen)">
+                <input type="number" id="amount" placeholder="Amount (₹)" min="0" step="0.01">
+            </div>
+            <div class="form-row">
+                <select id="category">
+                    <option value="Salary">💰 Salary</option>
+                    <option value="Food">🍚 Food</option>
+                    <option value="Transport">🚌 Transport</option>
+                    <option value="College">📚 College Fees</option>
+                    <option value="Health">🏥 Health</option>
+                    <option value="Shopping">🛒 Shopping</option>
+                    <option value="Bills">💡 Bills</option>
+                    <option value="Entertainment">🎮 Entertainment</option>
+                    <option value="Other">📝 Other</option>
+                </select>
+                <input type="date" id="date">
+                <button onclick="addTransaction()">Add Transaction</button>
+            </div>
+        </section>
+
+        <!-- Monthly Summary -->
+        <section class="summary-cards">
+            <div class="card">
+                <h3>Total Income</h3>
+                <div id="total-income">₹0.00</div>
+            </div>
+            <div class="card">
+                <h3>Total Expenses</h3>
+                <div id="total-expenses">₹0.00</div>
+            </div>
+            <div class="card">
+                <h3>This Month</h3>
+                <div id="month-expenses">₹0.00</div>
+            </div>
+        </section>
+
+        <!-- Filters -->
+        <div class="filters">
+            <button onclick="filterCurrentMonth()" class="filter-btn active" id="monthBtn">This Month</button>
+            <button onclick="showAll()" class="filter-btn" id="allBtn">All Time</button>
+            <button onclick="exportData()" class="export-btn">📥 Export CSV</button>
+            <button onclick="clearAllData()" class="clear-btn">🗑️ Clear All</button>
+        </div>
+
+        <!-- Transactions Table -->
+        <section class="table-container">
+            <h2>Transaction History</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transaction-list"></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
