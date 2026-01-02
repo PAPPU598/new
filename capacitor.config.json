@@ -1,0 +1,6 @@
+{
+  "appId": "com.pappu.expensetracker",
+  "appName": "Expense Tracker",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}
